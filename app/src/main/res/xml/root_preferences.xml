@@ -1,0 +1,31 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="General">
+
+
+        <ListPreference
+            app:key="@string/dark_mode"
+            android:entries="@array/theme_mode"
+            app:entryValues="@array/entry_values"
+            app:useSimpleSummaryProvider="true"
+            app:defaultValue="@string/dark_mode_def_value"/>
+        <Preference app:key="delete_all"
+            app:title="@string/delete_all_data"
+            android:icon="@drawable/ic_baseline_delete_24"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Development">
+        <Preference
+            android:icon="@drawable/twitter_icon"
+            app:key="developer"
+            app:title="@string/developer" />
+        <Preference
+            android:icon="@drawable/github_logo"
+            app:key="source_code"
+            app:title="@string/source_code" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

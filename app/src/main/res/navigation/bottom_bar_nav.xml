@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_bar_nav"
+    app:startDestination="@id/home">
+
+    <dialog
+        android:id="@+id/addToDoFragment"
+        android:name="com.example.todolist.ui.add.AddToDoFragment"
+        android:label="fragment_add_to_do"
+        tools:layout="@layout/fragment_add_to_do" >
+        <action
+            android:id="@+id/action_addToDoFragment_to_homeFragment"
+            app:destination="@id/home" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.todolist.ui.home.HomeFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addToDoFragment"
+            app:destination="@id/addToDoFragment" />
+        <action
+            android:id="@+id/action_homeFragment_self"
+            app:destination="@id/home" />
+        <action
+            android:id="@+id/action_homeFragment_to_detailsToDoFragment"
+            app:destination="@id/detailsToDoFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/detailsToDoFragment"
+        android:name="com.example.todolist.ui.details.DetailsToDoFragment"
+        tools:layout="@layout/fragment_details"
+        android:label="DetailsToDoFragment" >
+        <action
+            android:id="@+id/action_detailsToDoFragment_to_homeFragment"
+            app:destination="@id/home" />
+        <argument
+            android:name="toDo"
+            app:argType="com.example.todolist.data.model.ToDo" />
+    </dialog>
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.example.todolist.ui.settings.SettingsFragment"
+        tools:layout="@layout/fragment_settings"
+        android:label="SettingsFragment" >
+        <action
+            android:id="@+id/action_settings_to_home"
+            app:destination="@id/home" />
+    </fragment>
+</navigation>

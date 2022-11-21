@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">ToDoList</string>
+    <string name="save">Save</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="settings">Settings</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="red">Red</string>
+    <string name="purple">Purple</string>
+    <string name="orange">Orange</string>
+    <string name="blue">Blue</string>
+    <string name="you_re_all_done_for_today">You\'re all done for today!!</string>
+    <string name="add_to_do">Add To Do</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="all">All</string>
+    <string name="developer">Developer</string>
+    <string name="source_code">Source Code</string>
+    <string name="mode">Mode</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="theme">Theme</string>
+    <string name="delete_all_data">Delete All Data</string>
+    <string name="delete_all" />
+    <string name="title_preference" />
+    <string name="dialog_title_preference" />
+    <string name="yes">yes</string>
+    <string name="are_you_sure_delete_all_data">Are you sure delete all data?</string>
+    <string name="delete_data">Delete All Data</string>
+    <string name="no">no</string>
+    <string name="dark_mode_key">dark_mode_key</string>
+    <string name="dark_mode_def_value">MODE_NIGHT_FOLLOW_SYSTEM</string>
+</resources>
