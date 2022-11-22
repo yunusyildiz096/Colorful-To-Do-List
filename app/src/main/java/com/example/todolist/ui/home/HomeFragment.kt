@@ -46,29 +46,31 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             }
         })
-
-        viewModel.toDoList.observe(viewLifecycleOwner) {
+        viewModel.toDoList.observe(viewLifecycleOwner){
             adapter.toDoList = it
             binding.noteRecyclerView.adapter = adapter
         }
 
+
         adapter.onItemDelete = {
-            viewModel.delete(it)
-            findNavController().navigate(R.id.action_homeFragment_self)
-            requireView().snackBarWithAction("${it.title} Delete", "Take it back") {
-                viewModel.save(it)
+                viewModel.delete(it)
                 findNavController().navigate(R.id.action_homeFragment_self)
+                requireView().snackBarWithAction("${it.title} Delete", "Take it back") {
+                    viewModel.save(it)
+                    findNavController().navigate(R.id.action_homeFragment_self)
+                }
+
+            }
+            binding.floatingActionButton.setSafeOnClickListener {
+                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddToDoFragment())
+            }
+            adapter.onItemClick = {
+                val nav = HomeFragmentDirections.actionHomeFragmentToDetailsToDoFragment(it)
+                Navigation.findNavController(view).navigate(nav)
             }
 
         }
-        binding.floatingActionButton.setSafeOnClickListener {
-            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddToDoFragment())
-        }
-        adapter.onItemClick = {
-            val nav = HomeFragmentDirections.actionHomeFragmentToDetailsToDoFragment(it)
-            Navigation.findNavController(view).navigate(nav)
-        }
-    }
+
 
     private var simpleCallback =
         object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP.or(ItemTouchHelper.DOWN), 0) {
@@ -77,8 +79,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                var startPosition = viewHolder.adapterPosition
-                var endPosition = target.adapterPosition
+                val startPosition = viewHolder.adapterPosition
+                val endPosition = target.adapterPosition
                 recyclerView.adapter?.notifyItemMoved(startPosition, endPosition)
 
                 return true
@@ -90,7 +92,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }
 
-    private fun searchToDo() {
+    private fun searchToDo()  {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -130,14 +132,16 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 
+
     private fun searchToDo(query: String) {
         val searchQuery = "%$query%"
-        viewModel.searchToDo(searchQuery).observe(viewLifecycleOwner) {
+        viewModel.searchToDo(searchQuery).let {
             adapter.toDoList = it
         }
     }
 
     private fun recyclerEmpty() {
+
         adapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 super.onChanged()
@@ -162,3 +166,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
 }
+
+

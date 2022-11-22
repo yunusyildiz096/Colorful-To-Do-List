@@ -1,20 +1,20 @@
 package com.example.todolist.data.local
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.todolist.data.model.Alarm
 import com.example.todolist.data.model.ToDo
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ToDoListDAO {
     @Query("SELECT * FROM toDo")
-    fun getToDoList(): List<ToDo>
+    fun getToDoList(): Flow<List<ToDo>>
 
     @Query("SELECT * FROM toDo WHERE priority=:priority")
-    fun getToDoByPriority(priority: Int): List<ToDo>
+    fun getToDoByPriority(priority: Int): Flow<List<ToDo>>
 
     @Query("SELECT * FROM toDo WHERE title LIKE:query OR description LIKE:query")
-    fun searchToDo(query: String): LiveData<List<ToDo>>
+    fun searchToDo(query: String): List<ToDo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun save(toDo: ToDo)

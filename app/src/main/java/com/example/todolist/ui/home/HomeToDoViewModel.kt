@@ -34,14 +34,23 @@ class HomeToDoViewModel @Inject constructor(
     }
 
     fun getToDoList() {
-        _toDoList.value = getToDoListUseCase.invoke()
+        viewModelScope.launch {
+            getToDoListUseCase.invoke().collect{
+                _toDoList.value = it
+            }
+        }
     }
 
     fun getTodoByPriority(priority: Int) {
-        _toDoList.value = toDoPriorityUseCase.invoke(priority)
+        viewModelScope.launch {
+            toDoPriorityUseCase.invoke(priority).collect{
+                _toDoList.value = it
+            }
+        }
+
     }
 
-    fun searchToDo(query: String): LiveData<List<ToDo>> = searchToDoUseCase.invoke(query)
+    fun searchToDo(query: String): List<ToDo> = searchToDoUseCase.invoke(query)
 
     fun delete(toDo: ToDo) = viewModelScope.launch(Dispatchers.IO) {
         toDoDeleteUseCase.invoke(toDo)
