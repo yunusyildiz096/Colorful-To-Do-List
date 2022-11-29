@@ -1,7 +1,6 @@
 package com.example.todolist.data.local
 
 import androidx.room.*
-import com.example.todolist.data.model.Alarm
 import com.example.todolist.data.model.ToDo
 import kotlinx.coroutines.flow.Flow
 
@@ -27,8 +26,4 @@ interface ToDoListDAO {
 
     @Delete
     suspend fun delete(toDo: ToDo)
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addAlarm(vararg alarm : Alarm)
-
 }

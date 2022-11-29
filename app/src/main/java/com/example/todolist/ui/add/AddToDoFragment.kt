@@ -13,6 +13,7 @@ import com.example.todolist.data.model.ToDo
 import com.example.todolist.databinding.FragmentAddToDoBinding
 import com.example.todolist.util.delegate.viewBinding
 import com.example.todolist.util.extension.remove
+import com.example.todolist.util.extension.setSafeOnClickListener
 import com.example.todolist.util.extension.show
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.timepicker.MaterialTimePicker
@@ -33,7 +34,6 @@ class AddToDoFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         save()
         filterColor()
-
     }
 
     override fun onCreateView(
@@ -97,5 +97,4 @@ class AddToDoFragment : BottomSheetDialogFragment() {
         }
 
     }
-
 }

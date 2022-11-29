@@ -5,7 +5,6 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.*
 import androidx.fragment.app.viewModels
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -17,9 +16,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SettingsFragment : PreferenceFragmentCompat() ,SharedPreferences.OnSharedPreferenceChangeListener{
+class SettingsFragment : PreferenceFragmentCompat(),
+    SharedPreferences.OnSharedPreferenceChangeListener {
     var testPref: SwitchPreference? = null
-
 
 
     private val viewModel: SettingsViewModel by viewModels()
@@ -32,12 +31,22 @@ class SettingsFragment : PreferenceFragmentCompat() ,SharedPreferences.OnSharedP
 
         findPreference<Preference>("developer")?.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/ynsyldz2022")))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://twitter.com/ynsyldz2022")
+                    )
+                )
                 true
             }
         findPreference<Preference>("source_code")?.onPreferenceClickListener =
             Preference.OnPreferenceClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/yunusyildiz096")))
+                startActivity(
+                    Intent(
+                        Intent.ACTION_VIEW,
+                        Uri.parse("https://github.com/yunusyildiz096")
+                    )
+                )
                 true
             }
 
@@ -68,7 +77,7 @@ class SettingsFragment : PreferenceFragmentCompat() ,SharedPreferences.OnSharedP
         key.let {
             if (it == darkMode) sharedPreferences.let { pref ->
                 val darkModeValues = resources.getStringArray(R.array.entry_values)
-                when(pref?.getString(darkMode,darkModeValues[0])){
+                when (pref?.getString(darkMode, darkModeValues[0])) {
                     darkModeValues[0] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                     darkModeValues[1] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                     darkModeValues[2] -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

@@ -16,7 +16,8 @@ class ToDoListRepositoryImpl(private val dao: ToDoListDAO) : ToDoListRepository 
 
     override fun getToDoList(): Flow<List<ToDo>> = dao.getToDoList()
 
-    override fun getToDoListPriority(priority: Int): Flow<List<ToDo>> = dao.getToDoByPriority(priority)
+    override fun getToDoListPriority(priority: Int): Flow<List<ToDo>> =
+        dao.getToDoByPriority(priority)
 
     override fun searchToDo(query: String): List<ToDo> = dao.searchToDo(query)
 }

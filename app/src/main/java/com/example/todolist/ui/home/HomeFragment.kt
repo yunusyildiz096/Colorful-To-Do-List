@@ -46,30 +46,30 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
             }
         })
-        viewModel.toDoList.observe(viewLifecycleOwner){
+        viewModel.toDoList.observe(viewLifecycleOwner) {
             adapter.toDoList = it
             binding.noteRecyclerView.adapter = adapter
         }
 
 
         adapter.onItemDelete = {
-                viewModel.delete(it)
+            viewModel.delete(it)
+            findNavController().navigate(R.id.action_homeFragment_self)
+            requireView().snackBarWithAction("${it.title} Delete", "Take it back") {
+                viewModel.save(it)
                 findNavController().navigate(R.id.action_homeFragment_self)
-                requireView().snackBarWithAction("${it.title} Delete", "Take it back") {
-                    viewModel.save(it)
-                    findNavController().navigate(R.id.action_homeFragment_self)
-                }
-
-            }
-            binding.floatingActionButton.setSafeOnClickListener {
-                findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddToDoFragment())
-            }
-            adapter.onItemClick = {
-                val nav = HomeFragmentDirections.actionHomeFragmentToDetailsToDoFragment(it)
-                Navigation.findNavController(view).navigate(nav)
             }
 
         }
+        binding.floatingActionButton.setSafeOnClickListener {
+            findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToAddToDoFragment())
+        }
+        adapter.onItemClick = {
+            val nav = HomeFragmentDirections.actionHomeFragmentToDetailsToDoFragment(it)
+            Navigation.findNavController(view).navigate(nav)
+        }
+
+    }
 
 
     private var simpleCallback =
@@ -92,7 +92,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
         }
 
-    private fun searchToDo()  {
+    private fun searchToDo() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return true
@@ -130,7 +130,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             viewModel.getTodoByPriority(4)
         }
     }
-
 
 
     private fun searchToDo(query: String) {

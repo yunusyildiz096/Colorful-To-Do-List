@@ -66,11 +66,11 @@ class HomeAdapter : RecyclerView.Adapter<HomeAdapter.TestAdapterViewHolder>() {
                 toDoDeleteItem.setImageResource(R.drawable.ic_baseline_check_24)
             }
 
-                if (toDo.description.toString().isEmpty()){
-                    descriptionItem.remove()
-                }else{
-                    descriptionItem.show()
-                }
+            if (toDo.description.toString().isEmpty()) {
+                descriptionItem.remove()
+            } else {
+                descriptionItem.show()
+            }
 
         }
 

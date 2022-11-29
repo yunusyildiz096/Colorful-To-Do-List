@@ -1,8 +1,8 @@
 package com.example.todolist.ui.splash
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.MainActivity
 import com.example.todolist.R
 import kotlinx.coroutines.CoroutineScope
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             delay(2000)
-            startActivity(Intent(this@SplashActivity,MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             finish()
         }
 

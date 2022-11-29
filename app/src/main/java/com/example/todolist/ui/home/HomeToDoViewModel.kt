@@ -35,7 +35,7 @@ class HomeToDoViewModel @Inject constructor(
 
     fun getToDoList() {
         viewModelScope.launch {
-            getToDoListUseCase.invoke().collect{
+            getToDoListUseCase.invoke().collect {
                 _toDoList.value = it
             }
         }
@@ -43,7 +43,7 @@ class HomeToDoViewModel @Inject constructor(
 
     fun getTodoByPriority(priority: Int) {
         viewModelScope.launch {
-            toDoPriorityUseCase.invoke(priority).collect{
+            toDoPriorityUseCase.invoke(priority).collect {
                 _toDoList.value = it
             }
         }
