@@ -15,3 +15,11 @@
 <img src="https://user-images.githubusercontent.com/99584511/205698278-df8061d8-adaf-4d3f-9f58-dedf8d8ddc33.jpeg" width="100" />
 <img src="https://user-images.githubusercontent.com/99584511/205698405-7fc57c4c-6d7b-4e76-b631-3a33b989b401.jpeg"  width="100"/>
 <p/>
+
+# Components Used
+
+ - Coroutines
+ - MVVM Architecture
+ - Room
+ - Hilt
+ - Flow
