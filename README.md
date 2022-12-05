@@ -23,3 +23,4 @@
  - Room
  - Hilt
  - Flow
+ - View Binding
