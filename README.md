@@ -1,6 +1,6 @@
 # ToDo
 
-## Light Mode
+# Light Mode 🌞
 
 <p>
 <img src="https://user-images.githubusercontent.com/99584511/205696593-461d7688-a076-402b-8d77-1250f65f43b8.jpeg" width="100" />
@@ -9,7 +9,7 @@
 <img src="https://user-images.githubusercontent.com/99584511/205697980-0bc1123e-5c99-424d-87ce-8f5abb7ec8a9.jpeg"  width="100"/>
 <p/>
 
-## Dark Mode
+# Dark Mode 🌙
 
 <p>
 <img src="https://user-images.githubusercontent.com/99584511/205698278-df8061d8-adaf-4d3f-9f58-dedf8d8ddc33.jpeg" width="100" />
