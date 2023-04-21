@@ -1,6 +1,8 @@
 package com.example.todolist.util.extension
 
+import android.content.Context
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.google.android.material.snackbar.Snackbar
 
 fun View.remove() {
@@ -20,4 +22,11 @@ fun View.snackBarWithAction(message: String, actionlable: String, block: () -> U
         .setAction(actionlable) {
             block()
         }.show()
+}
+
+fun View.hideKeyboard() {
+    val inputMethodService = context.getSystemService(Context.INPUT_METHOD_SERVICE)
+    (inputMethodService as? InputMethodManager)?.hideSoftInputFromWindow(windowToken,
+        InputMethodManager.HIDE_NOT_ALWAYS
+    )
 }

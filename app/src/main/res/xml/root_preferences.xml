@@ -28,5 +28,4 @@
             app:title="@string/source_code" />
     </PreferenceCategory>
 
-
 </PreferenceScreen>

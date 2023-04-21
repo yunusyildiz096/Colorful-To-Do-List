@@ -18,6 +18,7 @@ import com.example.todolist.util.extension.show
 import com.example.todolist.util.extension.snackBarWithAction
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 

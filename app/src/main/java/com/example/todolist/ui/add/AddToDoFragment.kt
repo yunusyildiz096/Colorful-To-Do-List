@@ -1,26 +1,28 @@
 package com.example.todolist.ui.add
 
+import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.R
 import com.example.todolist.data.model.ToDo
 import com.example.todolist.databinding.FragmentAddToDoBinding
 import com.example.todolist.util.delegate.viewBinding
+import com.example.todolist.util.extension.hideKeyboard
 import com.example.todolist.util.extension.remove
-import com.example.todolist.util.extension.setSafeOnClickListener
 import com.example.todolist.util.extension.show
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.google.android.material.timepicker.TimeFormat
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 @AndroidEntryPoint
 class AddToDoFragment : BottomSheetDialogFragment() {
@@ -34,6 +36,7 @@ class AddToDoFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         save()
         filterColor()
+
     }
 
     override fun onCreateView(
@@ -67,21 +70,20 @@ class AddToDoFragment : BottomSheetDialogFragment() {
 
 
     private fun save() = with(binding) {
-
         saveBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_addToDoFragment_to_homeFragment)
+            it.hideKeyboard()
             val title = etTitle.text.toString()
             val description = etDescription.text.toString()
             val sdf = SimpleDateFormat("dd/MM/yyy", Locale.getDefault())
             val date = sdf.format(Date())
-
-            if (title.isBlank()) {
+            saveBtn.remove()
+            if (title.equals(" ")) {
                 Toast.makeText(
                     requireContext(),
                     "Please Enter title and description",
                     Toast.LENGTH_SHORT
                 ).show()
-                saveBtn.remove()
+                //saveBtn.remove()
             } else {
                 saveBtn.show()
                 viewModel.save(
@@ -93,8 +95,10 @@ class AddToDoFragment : BottomSheetDialogFragment() {
                         checkColor = checkColor
                     )
                 )
+                findNavController().navigate(R.id.action_addToDoFragment_to_homeFragment)
             }
         }
 
     }
+
 }

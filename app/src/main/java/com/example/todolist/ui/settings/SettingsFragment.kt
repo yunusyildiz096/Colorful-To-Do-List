@@ -11,7 +11,7 @@ import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreference
 import com.example.todolist.R
-import com.example.todolist.ui.splash.SplashActivity
+import com.example.todolist.ui.MainActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -56,10 +56,10 @@ class SettingsFragment : PreferenceFragmentCompat(),
                 val builder = MaterialAlertDialogBuilder(requireContext())
                 builder.setTitle(getString(R.string.delete_data))
                 builder.setMessage(getString(R.string.are_you_sure_delete_all_data))
-                builder.setPositiveButton(getString(R.string.yes)) { b, _ ->
+                builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
 
                     viewModel.deleteAll()
-                    startActivity(Intent(requireActivity(), SplashActivity::class.java))
+                    startActivity(Intent(requireActivity(), MainActivity::class.java))
                     requireActivity().finish()
 
                 }
